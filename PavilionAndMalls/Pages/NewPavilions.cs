@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PavilionAndMalls.Pages.Manager_C;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PavilionAndMalls.Pages
@@ -17,7 +18,9 @@ namespace PavilionAndMalls.Pages
         public static List<NewPavilions> LoadedData()
         {
             List<NewPavilions> ListPavilions = new List<NewPavilions>();
-            var ids = PavilionsContext.GetContext().Pavilions.Select(s => s).ToList();
+            var ids = PavilionsContext.GetContext().Pavilions
+                .Where(s => s.IdMall == ManagerCData.IdMalls)
+                .Select(s => s).ToList();
             foreach (var id in ids)
             { 
                 var pavilion = new NewPavilions();
