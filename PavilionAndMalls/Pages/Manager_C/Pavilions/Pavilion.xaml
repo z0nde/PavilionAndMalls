@@ -1,0 +1,27 @@
+﻿<Page x:Class="PavilionAndMalls.Pages.Manager_C.Pavilion_"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PavilionAndMalls.Pages.Manager_C"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ManagerCPavilions">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="230*"/>
+            <RowDefinition Height="220*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="DGrPavilions" AutoGenerateColumns="False" Margin="10,10,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название ТЦ" Width="*" Binding="{Binding Mall.MallName}"/>
+                <DataGridTextColumn Header="Номер этажа" Width="*" Binding="{Binding LevelNumber}"/>
+                <DataGridTextColumn Header="Площадь" Width="*" Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="Статус павильона" Width="*" Binding="{Binding PavilionStatus.PavilionStatus1}"/>
+                <DataGridTextColumn Header="Коэффициент добавочной стоимости" Width="*" Binding="{Binding ValueAddedFactor}"/>
+                <DataGridTextColumn Header="Стоимость квадратного метра" Width="*" Binding="{Binding SquareMeterCost}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
