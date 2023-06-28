@@ -23,9 +23,17 @@ namespace PavilionAndMalls.Pages.Manager_C
         public Pavilion_()
         {
             InitializeComponent();
-            DGrPavilions.ItemsSource =
-                (from p in PavilionsContext.GetContext().Pavilions
-                select new { p.IdMall, p.LevelNumber, p.Area, p.IdPavilionStatus, p.ValueAddedFactor, p.SquareMeterCost }).ToList();
+            DGrPavilions.ItemsSource = NewPavilions.LoadedData();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

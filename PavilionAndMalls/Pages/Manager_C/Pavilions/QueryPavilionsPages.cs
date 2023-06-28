@@ -8,6 +8,14 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
 {
     public class QueryPavilionsPages
     {
+        public void AddPavilion()
+        {
 
+        }
+
+        public void UpdatePavilin()
+        {
+
+        }
     }
 }
