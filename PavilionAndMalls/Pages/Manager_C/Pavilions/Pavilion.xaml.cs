@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PavilionAndMalls.Pages.Manager_C.Pavilion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,13 @@ namespace PavilionAndMalls.Pages.Manager_C
     /// </summary>
     public partial class Pavilion_ : Page
     {
+        QueryPavilionsPages Query = new QueryPavilionsPages();
+
         public Pavilion_()
         {
             InitializeComponent();
             DGrPavilions.ItemsSource = NewPavilions.LoadedData();
+            StatusPavilionCombo.ItemsSource = Query.Statuses();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -34,6 +38,16 @@ namespace PavilionAndMalls.Pages.Manager_C
         private void Update_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DGrPavilions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ManagerCData.IdPavilions = DGrPavilions.SelectedIndex + 1;
+            NumberFloorTxt.Text = Query.FoundFloor();
+            PavilionCodeTxt.Text = Query.FoundPavilionCode();
+            AreaTxt.Text = Query.FoundArea();
+            VAFTxt.Text = Query.FoundVAF();
+            MSQTxt.Text = Query.FoundMeterSquareCost();
         }
     }
 }
