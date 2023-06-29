@@ -5,5 +5,6 @@
         public static string arr = "abcdefghijklmnopqrstuvwxyz";
         public static string ARR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public static string INT = "0123456789";
+        public static string ServiceSymbols = ",.<>/?:;\\|{][}=+-_!@#$%^&*";
     }
 }

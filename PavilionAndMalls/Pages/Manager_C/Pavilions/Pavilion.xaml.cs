@@ -32,12 +32,12 @@ namespace PavilionAndMalls.Pages.Manager_C
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            Query.AddPavilion(NumberFloorTxt.Text, PavilionCodeTxt.Text, AreaTxt.Text, StatusPavilionCombo.Text, VAFTxt.Text, MSQTxt.Text);
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+            Query.UpdatePavilion(NumberFloorTxt.Text, PavilionCodeTxt.Text, AreaTxt.Text, StatusPavilionCombo.Text, VAFTxt.Text, MSQTxt.Text);
         }
 
         private void DGrPavilions_MouseDoubleClick(object sender, MouseButtonEventArgs e)

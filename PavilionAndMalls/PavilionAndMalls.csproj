@@ -19,4 +19,8 @@
     <Page Include="App.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestProject1\PavilionAndMalls.Tests.csproj" />
+  </ItemGroup>
+
 </Project>

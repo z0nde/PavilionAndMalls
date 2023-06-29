@@ -47,7 +47,6 @@ namespace PavilionAndMalls
 
         private void PasswdVisible_Click(object sender, RoutedEventArgs e)
         {
-            //PhotoConverter.TransferringFolderToDatabase();
 
         }
     }

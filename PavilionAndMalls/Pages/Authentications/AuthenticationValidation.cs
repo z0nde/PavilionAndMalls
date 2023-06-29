@@ -35,7 +35,7 @@ namespace PavilionAndMalls.Pages.Authentications
             {
                 if (AuthenticationData.IdRole == 1)
                 {
-
+                    FrameManager.MainFrame.Navigate(new Administrators.Employee());
                     AuthenticationData.AttemptsCaptcha = 0;
                 }
                 else if (AuthenticationData.IdRole == 2)
@@ -49,7 +49,7 @@ namespace PavilionAndMalls.Pages.Authentications
                 }
                 else if (AuthenticationData.IdRole == 4)
                 {
-                    AuthenticationData.AttemptsCaptcha = 0;
+                    //AuthenticationData.AttemptsCaptcha = 0;
                 }
                 else
                 {
