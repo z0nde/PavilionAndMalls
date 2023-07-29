@@ -9,7 +9,7 @@
       Title="UpadateMalls">
 
     <Grid>
-        <Grid.RowDefinitions>
+        
             <RowDefinition Height="42*"/>
             <RowDefinition Height="124*"/>
             <RowDefinition Height="96*"/>
