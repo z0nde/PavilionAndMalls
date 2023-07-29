@@ -19,7 +19,7 @@ namespace UnitTestProject1
         public int CheckPassword(string PassWord)
         {
             int quality = 0;
-            if (PassWord.Length == 8)
+            if (PassWord.Length >= 8 && PassWord.Length <=15)
                 quality += 1;
             if (PassWord.Contains(ArrSymbols.ARR))
                 quality += 1;
@@ -27,7 +27,7 @@ namespace UnitTestProject1
                 quality += 1;
             if (PassWord.Contains(ArrSymbols.ServiceSymbols))
                 quality += 1;
-            if (PassWord.Length <= 20)
+            if (PassWord.Length > 15 && PassWord.Length <= 20)
                 quality += 1;
             return quality;
 

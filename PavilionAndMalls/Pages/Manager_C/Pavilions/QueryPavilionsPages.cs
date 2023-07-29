@@ -9,7 +9,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
 {
     public class QueryPavilionsPages : IQueryIdsPavilion
     {
-        public string? FoundFloor()
+        public static string? FoundFloor()
         {
             var floor = PavilionsContext.GetContext().Pavilions
                 .Where(s => s.IdPavilion == ManagerCData.IdPavilions)
@@ -17,13 +17,13 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
             return floor;
         }
 
-        public string? FoundPavilionCode()
+        /*public string? FoundPavilionCode()
         {
-            var code = PavilionsContext.GetContext().Pavilions
-                .Where(s => s.IdPavilion == ManagerCData.IdPavilions)
+            *//*var code = NewPavilions.LoadedData()
+                .Where(s => s. == ManagerCData.IdPavilions)
                 .Select(s => s.PavilionNumber).Distinct().FirstOrDefault();
-            return code;
-        }
+            return code;*//*
+        }*/
 
         public string? FoundArea()
         {

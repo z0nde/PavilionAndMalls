@@ -8,10 +8,9 @@ namespace PavilionAndMalls.Pages.Authentications
     public class AuthenticationValidation
     {
         QueryAuthentication Query = new QueryAuthentication();
-        public AuthenticationValidation()
-        {
 
-        }
+        public AuthenticationValidation()
+        { }
 
         /// <summary>
         /// Конструктор для класса, принимающий логин и пароль, и записывающий аргументы в свойства 
@@ -44,7 +43,7 @@ namespace PavilionAndMalls.Pages.Authentications
                 }
                 else if (AuthenticationData.IdRole == 3)
                 {
-                    FrameManager.MainFrame.Navigate(new ManagerC.ManagerC());
+                    FrameManager.MainFrame.Navigate(new Manager_C.Malls.MallList()) ;
                     AuthenticationData.AttemptsCaptcha = 0;
                 }
                 else if (AuthenticationData.IdRole == 4)

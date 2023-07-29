@@ -1,4 +1,5 @@
 ﻿using PavilionAndMalls.Pages.Authentications;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,7 +23,7 @@ namespace PavilionAndMalls
 
             if (AuthenticationData.AttemptsCaptcha < 3)
             {
-                AuthenticationValidation QueryAcc = new AuthenticationValidation(Login.Text, Password.Text);
+                AuthenticationValidation QueryAcc = new(Login.Text, Password.Text);
                 QueryAcc.Controller();                
             }
             else 
@@ -34,20 +35,38 @@ namespace PavilionAndMalls
                 {
                     Capcha.Visibility = Visibility.Hidden;
                     InputCapcha.Visibility = Visibility.Hidden;
-                    AuthenticationValidation QueryAcc = new AuthenticationValidation(Login.Text, Password.Text);
+                    AuthenticationValidation QueryAcc = new(Login.Text, Password.Text);
                     QueryAcc.Controller();
                 }
                 Capcha.Content = Pages.Authentications.Capcha.Make();
             }
         }
-        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void PasswdVisible_Click(object sender, RoutedEventArgs e)
         {
+            /*PasswordTextChanged.Click++;
+            if (PasswordTextChanged.Click % 2 == 0)
+            {
+                Password.Text = PasswordTextChanged.Visiblpassword();
+            }
+            else if (PasswordTextChanged.Click % 2 != 0)
+            {
+                PasswordTextChanged ptc = new PasswordTextChanged(Password.Text);
+                Password.Text = ptc.HidingPassword();
+            }*/
+        }
 
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            /*PasswordTextChanged.CountChar = Convert.ToUInt16(Password.Text.Length);
+            if (PasswordTextChanged.Click % 2 == 0)
+            {
+                Password.Text = PasswordTextChanged.Visiblpassword();
+            }
+            else if (PasswordTextChanged.Click % 2 != 0)
+            {
+                PasswordTextChanged ptc = new PasswordTextChanged(Password.Text);
+                Password.Text = ptc.HidingPassword();
+            }*/
         }
     }
 }

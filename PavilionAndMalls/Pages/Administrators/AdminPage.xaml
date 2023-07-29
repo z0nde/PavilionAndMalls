@@ -1,0 +1,25 @@
+﻿<Page x:Class="PavilionAndMalls.Pages.Administrators.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PavilionAndMalls.Pages.Administrators"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="96*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="GOTOEmployee" Content="Работники" Margin="10,10,10,10" Grid.Row="1" Click="GOTOEmployee_Click"/>
+        <Button x:Name="GOTOLeasing" Content="Аренда" Margin="10,10,10,10" Grid.Row="1" Grid.Column="1" Click="GOTOLeasing_Click"/>
+    </Grid>
+</Page>

@@ -1,12 +1,6 @@
 ﻿using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using PavilionAndMalls.Pages;
-using System.Security.Claims;
-using System.Windows.Documents;
 
 namespace PavilionAndMalls
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PavilionAndMalls.Pages
+namespace PavilionAndMalls.Data.NewDataForDisplay
 {
     public class NewTenants
     {

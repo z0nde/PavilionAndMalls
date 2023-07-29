@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Pages\Manager_C\Malls\ListMalls.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -17,10 +21,6 @@
 
   <ItemGroup>
     <Page Include="App.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\UnitTestProject1\PavilionAndMalls.Tests.csproj" />
   </ItemGroup>
 
 </Project>

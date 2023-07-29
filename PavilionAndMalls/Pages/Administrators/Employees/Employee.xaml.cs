@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using PavilionAndMalls.Data.NewDataForDisplay;
 using PavilionAndMalls.Pages.Administrators.Employees;
 
 namespace PavilionAndMalls.Pages.Administrators
@@ -10,7 +11,7 @@ namespace PavilionAndMalls.Pages.Administrators
     /// </summary>
     public partial class Employee : Page
     {
-        QueryEmployeesInAdminPage Query = new QueryEmployeesInAdminPage();
+        private readonly QueryEmployeesInAdminPage Query = new QueryEmployeesInAdminPage();
 
         public Employee()
         {

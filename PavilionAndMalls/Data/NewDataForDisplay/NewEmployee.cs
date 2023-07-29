@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PavilionAndMalls.Pages
+namespace PavilionAndMalls.Data.NewDataForDisplay
 {
     public class NewEmployee
     {
@@ -9,7 +9,7 @@ namespace PavilionAndMalls.Pages
         public string? Name { get; set; }
         public string? Patronymic { get; set; }
         public string? Login { get; set; }
-        public string? PassWord { get; set; }   
+        public string? PassWord { get; set; }
         public string? Role { get; set; }
         public string? PhoneNumber { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using PavilionAndMalls.Pages.Manager_C.Pavilion;
+﻿using PavilionAndMalls.Data.NewDataForDisplay;
+using PavilionAndMalls.Pages.Manager_C.Pavilion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +44,8 @@ namespace PavilionAndMalls.Pages.Manager_C
         private void DGrPavilions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ManagerCData.IdPavilions = DGrPavilions.SelectedIndex + 1;
-            NumberFloorTxt.Text = Query.FoundFloor();
-            PavilionCodeTxt.Text = Query.FoundPavilionCode();
+            NumberFloorTxt.Text = QueryPavilionsPages.FoundFloor();
+            //PavilionCodeTxt.Text = Query.FoundPavilionCode();
             AreaTxt.Text = Query.FoundArea();
             VAFTxt.Text = Query.FoundVAF();
             MSQTxt.Text = Query.FoundMeterSquareCost();

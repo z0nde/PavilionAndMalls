@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PavilionAndMalls.Pages.Authentications
 {
-    public class QueryAuthentication : IQueryAuthenticationFoundIdRole
+    public class QueryAuthentication 
     {
         public int IdRoleInEmployee()
         {

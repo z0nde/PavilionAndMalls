@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PavilionAndMalls.Pages.Manager_C.Malls
 {
-    public class QueryManagerC : IQueryIdsMall
+    public class QueryManagerC 
     {
         public int IdCity(string City)
         {

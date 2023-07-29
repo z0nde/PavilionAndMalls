@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PavilionAndMalls.Pages.Administrators
+﻿namespace PavilionAndMalls.Pages.Administrators
 {
     public static class AdministratorsData
     {

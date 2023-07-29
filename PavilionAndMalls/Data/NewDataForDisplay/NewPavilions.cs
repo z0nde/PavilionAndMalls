@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PavilionAndMalls.Pages
+namespace PavilionAndMalls.Data.NewDataForDisplay
 {
     public class NewPavilions
     {
@@ -22,12 +22,12 @@ namespace PavilionAndMalls.Pages
                 .Where(s => s.IdMall == ManagerCData.IdMalls)
                 .Select(s => s).ToList();
             foreach (var id in ids)
-            { 
+            {
                 var pavilion = new NewPavilions();
                 pavilion.MallStatuses = PavilionsContext.GetContext().MallStatuses
-                    .Where(s => s.IdMallStatus == (PavilionsContext.GetContext().Malls
+                    .Where(s => s.IdMallStatus == PavilionsContext.GetContext().Malls
                         .Where(s => s.IdMall == id.IdMall)
-                        .Select(s => s.IdMallStatus).Distinct().FirstOrDefault()))
+                        .Select(s => s.IdMallStatus).Distinct().FirstOrDefault())
                     .Select(s => s.MallStatus1).Distinct().FirstOrDefault();
                 pavilion.MallName = PavilionsContext.GetContext().Malls
                     .Where(s => s.IdMall == id.IdMall)
