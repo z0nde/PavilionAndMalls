@@ -1,0 +1,52 @@
+﻿<Page x:Class="PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitoring.FrameForMonitoringPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitoring"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FrameForMonitoringPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="327*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="MonitoringDGr" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="7">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallName}"/>
+                <DataGridTextColumn Header="Статус ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallStatus}"/>
+                <DataGridTextColumn Header="Количество павильонов" IsReadOnly="True" Width="*" Binding="{Binding PavilionsCount}"/>
+                <DataGridTextColumn Header="Город" IsReadOnly="True" Width="*" Binding="{Binding City}"/>
+                <DataGridTextColumn Header="Затраты на строительство ТЦ" IsReadOnly="True" Width="*" Binding="{Binding BuildingCost}"/>
+                <DataGridTextColumn Header="Коэффициент добавочной стоимости ТЦ" IsReadOnly="True" Width="*" Binding="{Binding ValueAddedFactor}"/>
+                <DataGridTextColumn Header="Количество этажей" IsReadOnly="True" Width="*" Binding="{Binding LevelsCount}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="FoundNameMall" TextChanged="FoundNameMall_TextChanged" Margin="0,10,10,10" Grid.Row="1"/>
+        <TextBox x:Name="FoundMallStatus" TextChanged="FoundMallStatus_TextChanged" Margin="10,10,10,10" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="FoundPavilionsCount" TextChanged="FoundMallsCount_TextChanged" Margin="10,10,10,10" Grid.Row="1" Grid.Column="2"/>
+        <TextBox x:Name="FoundCity" TextChanged="FoundCity_TextChanged" Margin="10,10,10,10" Grid.Row="1" Grid.Column="3"/>
+        <TextBox x:Name="FoundBuildingCost" TextChanged="FoundBuildingCost_TextChanged" Margin="10,10,10,10" Grid.Row="1" Grid.Column="4"/>
+        <TextBox x:Name="FoundValueAddedFactor" TextChanged="FoundValueAddedFactor_TextChanged" Margin="10,10,10,10" Grid.Row="1" Grid.Column="5"/>
+        <TextBox x:Name="FoundLevelsCount" TextChanged="FoundLevelsCount_TextChanged" Margin="10,10,0,10" Grid.Row="1" Grid.Column="6"/>
+        <Label Content="Поиск по названию" Margin="0,0,10,0"/>
+        <Label Content="Поиск по статусу" Grid.Column="1" Margin="10,0,10,0"/>
+        <Label Content="Поиск по кол-ву павильонов" Grid.Column="2" Margin="0,0,114,1" Grid.ColumnSpan="2"/>
+        <Label Content="Поиск по городу" Grid.Column="3" Margin="10,0,10,1"/>
+        <Label Content="Поиск по затратам" Grid.Column="4" Margin="10,0,10,0"/>
+        <Label Content="Поиск по коэффициенту" Grid.Column="5" Margin="10,0,10,0"/>
+        <Label Content="Поиск по кол-ву этажей" Grid.Column="6" Margin="10,0,0,0"/>
+    </Grid>
+</Page>

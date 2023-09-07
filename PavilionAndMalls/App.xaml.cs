@@ -13,5 +13,17 @@ namespace PavilionAndMalls
     /// </summary>
     public partial class App : Application
     {
+        public static PavilionsContext context { get; private set; }
+        public App()
+        {
+            try 
+            {
+                context = PavilionsContext.GetContext();
+            }
+            catch 
+            {
+                
+            }
+        }
     }
 }

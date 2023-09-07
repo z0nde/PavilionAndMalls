@@ -1,13 +1,10 @@
-﻿using PavilionAndMalls.Pages.Manager_C.Pavilions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PavilionAndMalls.Pages.Manager_C.Pavilion
 {
-    public class QueryPavilionsPages : IQueryIdsPavilion
+    public class QueryPavilionsPages
     {
         public static string? FoundFloor()
         {
@@ -19,10 +16,10 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
 
         /*public string? FoundPavilionCode()
         {
-            *//*var code = NewPavilions.LoadedData()
+            var code = NewPavilions.LoadedData()
                 .Where(s => s. == ManagerCData.IdPavilions)
                 .Select(s => s.PavilionNumber).Distinct().FirstOrDefault();
-            return code;*//*
+            return code;
         }*/
 
         public string? FoundArea()

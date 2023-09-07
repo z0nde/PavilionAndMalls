@@ -10,6 +10,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
     /// </summary>
     public class NewMalls
     {
+        public int IdMall { get; set; }
         public string? MallName { get; set; }
         public string? MallStatus { get; set; }
         public int? PavilionsCount { get; set; }
@@ -19,26 +20,28 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
         public int? LevelsCount { get; set; }
         public BitmapImage MallPhoto { get; set; }
 
-        public int? IdMallStatus { get; set; }
+        public int IdMallStatus { get; set; }
 
         public static List<NewMalls> LoadedData()
         {
-            List<NewMalls> ListMalls = new();
-            foreach (Mall id in PavilionsContext.GetContext().Malls
+            var ListMalls = new List<NewMalls>();
+            var context = App.context;
+            foreach (Mall id in context.Malls
                 .Where(s => s.IdMallStatus != 4)
                 .Select(s => s)
                 .ToList())
             {
                 NewMalls mall = new()
                 {
+                    IdMall = id.IdMall,
                     MallName = id.MallName,
-                    IdMallStatus = id.IdMallStatus,
-                    MallStatus = PavilionsContext.GetContext().MallStatuses
+                    IdMallStatus = (int)id.IdMallStatus!,
+                    MallStatus = context.MallStatuses
                         .Where(s => s.IdMallStatus == id.IdMallStatus)
                         .Select(s => s.MallStatus1)
                         .FirstOrDefault(),
                     PavilionsCount = id.PavilionsCount,
-                    City = PavilionsContext.GetContext().Cities
+                    City = context.Cities
                         .Where(s => s.IdCity == id.IdCity)
                         .Select(s => s.CityName)
                         .FirstOrDefault(),
@@ -50,14 +53,6 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
                 ListMalls.Add(mall);
             }
             return ListMalls;
-        }
-
-        public static List<string> GetStatusExDel()
-        {
-            return PavilionsContext.GetContext().MallStatuses
-                .Where(s => s.IdMallStatus != 4)
-                .Select(s => s.MallStatus1)
-                .Distinct().ToList();
         }
     }
 }

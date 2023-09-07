@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PavilionAndMalls.Pages.Manager_C.Malls
+namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
 {
-    public class QueryManagerC 
+    public class QueryAddUpdate
     {
-        public int IdCity(string City)
+        private int IdCity(string City)
         {
-            int IdCity = PavilionsContext.GetContext().Cities
+            int IdCity = App.context.Cities
                 .Where(s => s.CityName == City)
                 .Select(s => s.IdCity).FirstOrDefault();
             return IdCity;
         }
 
-        public int IdStatus(string Status)
+        private int IdStatus(string Status)
         {
-            int IdStatus = PavilionsContext.GetContext().MallStatuses
+            int IdStatus = App.context.MallStatuses
                 .Where(s => s.MallStatus1 == Status)
                 .Select(s => s.IdMallStatus).FirstOrDefault();
             return IdStatus;
         }
 
-        public static List<string?> ListCity()
+        private int SearchMallCity(string Mall, string City)
+        {
+            int idMall = App.context.Malls
+                .Where(s => s.MallName == Mall && s.IdCity == IdCity(City))
+                .Select(s => s.IdMall).FirstOrDefault();
+            return idMall;
+        }
+
+        /*public static List<string?> ListCity()
         {
             List<string?> CityList = PavilionsContext.GetContext().Cities.Select(s => s.CityName).ToList();
             return CityList;
@@ -32,15 +40,8 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
         {
             List<string?> MallList = PavilionsContext.GetContext().Malls.Select(s => s.MallName).ToList();
             return MallList;
-        }
+        }*/
 
-        public int SearchMallCity(string Mall, string City)
-        {
-            int idMall = PavilionsContext.GetContext().Malls
-                .Where(s => s.MallName == Mall && s.IdCity == IdCity(City))
-                .Select(s => s.IdMall).FirstOrDefault();
-            return idMall;
-        }
 
         public void AddMall(string MallName, string ValueAddedFactor, string Status, string BuildingCost, string City, string PathImage, string LevelCount, string CountPavilions)
         {
@@ -52,7 +53,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
             int idCity = IdCity(City);
             byte[] Photo = PhotoConverter.ToByteArrWithPath(PathImage);
 
-            var Mall = new Mall
+            Mall Mall = new()
             {
                 MallName = MallName,
                 IdMallStatus = idStatus,
@@ -64,8 +65,8 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
                 MallPicture = Photo
             };
 
-            PavilionsContext.GetContext().Malls.Add(Mall);
-            PavilionsContext.GetContext().SaveChanges();
+            App.context.Malls.Add(Mall);
+            App.context.SaveChanges();
         }
 
         public void UpdateMall(string MallName, string ValueAddedFactor, string Status, string BuildingCost, string City, string PathImage, string LevelCount, string CountPavilions, string SearchMall, string SearchCity)
@@ -82,7 +83,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
             var upMall = PavilionsContext.GetContext().Malls
                 .Where(s => s.IdMall == IdMall)
                 .Select(s => s).Distinct().FirstOrDefault();
-            upMall.MallName = MallName;
+            upMall!.MallName = MallName;
             upMall.ValueAddedFactor = ValueAdd;
             upMall.IdMallStatus = idStatus;
             upMall.BuildingCost = Cost;
@@ -90,7 +91,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
             upMall.MallPicture = Photo;
             upMall.LevelsCount = Floors;
             upMall.PavilionsCount = Count;
-            PavilionsContext.GetContext().SaveChanges();
+            App.context.SaveChanges();
         }
     }
 }

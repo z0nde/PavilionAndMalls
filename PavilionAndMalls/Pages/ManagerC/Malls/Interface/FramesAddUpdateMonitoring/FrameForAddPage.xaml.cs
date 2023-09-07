@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PavilionAndMalls.Pages.Manager_C.Malls
+namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdate
 {
     /// <summary>
-    /// Логика взаимодействия для UpadateMalls.xaml
+    /// Логика взаимодействия для FrameForAddPage.xaml
     /// </summary>
-    public partial class UpdateMalls : Page
+    public partial class FrameForAddPage : Page
     {
-        public UpdateMalls()
+        public FrameForAddPage()
         {
             InitializeComponent();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,18 +1,10 @@
 ﻿using PavilionAndMalls.Data.NewDataForDisplay;
-using System;
+using PavilionAndMalls.Pages.ManagerC.Malls.List;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PavilionAndMalls.Pages.Manager_C.Malls
 {
@@ -28,9 +20,9 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
             InitializeComponent();
             LBoMallsItemsSourceNull();
             LBoMalls.ItemsSource ??= NewMalls.LoadedData();
-            SortCityCmb.ItemsSource ??= SortItemsForCombo.Sorting;
-            SortStatusCmb.ItemsSource ??= SortItemsForCombo.Sorting;
-            SelectStatusCmb.ItemsSource ??= NewMalls.GetStatusExDel();
+            SortCityCmb.ItemsSource ??= Collections.SortItemsForCombo;
+            SortStatusCmb.ItemsSource ??= Collections.SortItemsForCombo;
+            SelectStatusCmb.ItemsSource ??= MallListAddons.GetStatusExDel();
         }
 
         private void LBoMalls_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -41,19 +33,19 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-            FrameManager.MainFrame.Navigate(new UpdateMalls());
+            FrameManager.MainFrame.Navigate(new MallInterface());
         }
 
         private void SortCityCmb_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (SortCityCmb.Text == SortItemsForCombo.Sorting[0])
+            if (SortCityCmb.Text == Collections.SortItemsForCombo[0])
             {
                 LBoMallsItemsSourceNull();
                 LBoMalls.ItemsSource = NewMalls.LoadedData()
                     .OrderBy(s => s.City)
                     .Select(s => s);
             }
-            else if (SortCityCmb.Text == SortItemsForCombo.Sorting[1])
+            else if (SortCityCmb.Text == Collections.SortItemsForCombo[1])
             {
                 LBoMallsItemsSourceNull();
                 LBoMalls.ItemsSource = NewMalls.LoadedData()
@@ -64,15 +56,15 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
 
         private void SortStatusCmb_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (SortStatusCmb.Text == SortItemsForCombo.Sorting[0])
+            if (SortStatusCmb.Text == Collections.SortItemsForCombo[0])
             {
                 LBoMallsItemsSourceNull();
-                SelectStatusCmb.Text ??= null;
+                SelectStatusCmb.Text = null;
                 LBoMalls.ItemsSource = NewMalls.LoadedData()
                     .OrderBy(s => s.IdMallStatus)
                     .Select(s => s);
             }
-            else if (SortStatusCmb.Text == SortItemsForCombo.Sorting[1])
+            else if (SortStatusCmb.Text == Collections.SortItemsForCombo[1])
             {
                 LBoMallsItemsSourceNull();
                 SelectStatusCmb.Text = null;
@@ -84,7 +76,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
 
         private void SelectStatusCmb_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            List<string> list = new(NewMalls.GetStatusExDel());
+            List<string> list = new(MallListAddons.GetStatusExDel());
             if (SelectStatusCmb.Text == list[0])
             {
                 LBoMallsItemsSourceNull();

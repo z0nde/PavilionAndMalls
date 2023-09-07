@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Page Remove="Pages\Manager_C\Malls\ListMalls.xaml" />
+    <Page Remove="Pages\ManagerC\Malls\ListMalls.xaml" />
   </ItemGroup>
 
   <ItemGroup>
