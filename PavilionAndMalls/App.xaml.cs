@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using PavilionAndMalls.Data;
+using System;
 using System.Windows;
 
 namespace PavilionAndMalls
@@ -13,16 +9,16 @@ namespace PavilionAndMalls
     /// </summary>
     public partial class App : Application
     {
-        public static PavilionsContext context { get; private set; }
+        public static PavilionsContext Context { get; private set; }
         public App()
         {
             try 
             {
-                context = PavilionsContext.GetContext();
+                Context = new PavilionsContext();
             }
-            catch 
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
     }

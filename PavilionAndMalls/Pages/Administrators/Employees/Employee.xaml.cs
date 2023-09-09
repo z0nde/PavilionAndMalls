@@ -11,7 +11,7 @@ namespace PavilionAndMalls.Pages.Administrators
     /// </summary>
     public partial class Employee : Page
     {
-        private readonly QueryEmployeesInAdminPage Query = new QueryEmployeesInAdminPage();
+        private readonly QueryEmployeesInAdminPage Query = new();
 
         public Employee()
         {
@@ -34,13 +34,14 @@ namespace PavilionAndMalls.Pages.Administrators
 
         private void DGrEmployees_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var context = App.Context;
             AdministratorsData.IdEmployee = DGrEmployees.SelectedIndex + 1;
-            SurnameTxt.Text = Query.FoundSurname();
-            NameTxt.Text = Query.FoundName();
-            PatronymicTxt.Text = Query.FoundPatronymic();
-            LoginTxt.Text = Query.FoundLogin();
-            PasswdTxt.Text = Query.FoundPassword();
-            PhonenumberTxt.Text = Query.FoundPhoneNumber();
+            SurnameTxt.Text = Query.FoundSurname(context);
+            NameTxt.Text = Query.FoundName(context);
+            PatronymicTxt.Text = Query.FoundPatronymic(context);
+            LoginTxt.Text = Query.FoundLogin(context);
+            PasswdTxt.Text = Query.FoundPassword(context);
+            PhonenumberTxt.Text = Query.FoundPhoneNumber(context);
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

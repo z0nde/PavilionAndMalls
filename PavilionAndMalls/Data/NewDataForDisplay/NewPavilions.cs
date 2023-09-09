@@ -17,25 +17,26 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
 
         public static List<NewPavilions> LoadedData()
         {
+            var context = App.Context;
             List<NewPavilions> ListPavilions = new List<NewPavilions>();
-            var ids = PavilionsContext.GetContext().Pavilions
+            var ids = context.Pavilions
                 .Where(s => s.IdMall == ManagerCData.IdMalls)
                 .Select(s => s).ToList();
             foreach (var id in ids)
             {
                 var pavilion = new NewPavilions();
-                pavilion.MallStatuses = PavilionsContext.GetContext().MallStatuses
-                    .Where(s => s.IdMallStatus == PavilionsContext.GetContext().Malls
+                pavilion.MallStatuses = context.MallStatuses
+                    .Where(s => s.IdMallStatus == context.Malls
                         .Where(s => s.IdMall == id.IdMall)
                         .Select(s => s.IdMallStatus).Distinct().FirstOrDefault())
                     .Select(s => s.MallStatus1).Distinct().FirstOrDefault();
-                pavilion.MallName = PavilionsContext.GetContext().Malls
+                pavilion.MallName = context.Malls
                     .Where(s => s.IdMall == id.IdMall)
                     .Select(s => s.MallName).Distinct().FirstOrDefault();
                 pavilion.NumberFloor = id.LevelNumber;
                 pavilion.PavilionCode = id.PavilionNumber;
                 pavilion.Area = id.Area;
-                pavilion.PavilionStatuses = PavilionsContext.GetContext().PavilionStatuses
+                pavilion.PavilionStatuses = context.PavilionStatuses
                     .Where(s => s.IdPavilionStatus == id.IdPavilionStatus)
                     .Select(s => s.PavilionStatus1).Distinct().FirstOrDefault();
                 pavilion.ValueAddFacktor = id.ValueAddedFactor;

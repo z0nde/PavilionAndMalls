@@ -15,7 +15,9 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
         /// </summary>
         public void DGRNull() => MonitoringDGr.ItemsSource = null;
 
+
         private readonly List<NewMalls> NewMallContext = NewMalls.LoadedData();
+        public List<NewMalls> NewMallContextWithFound { get; set; } = new();
 
         public FrameForMonitoringPage()
         {
@@ -34,11 +36,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundNameMall.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundMallsName(FoundNameMall.Text);
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundMallsName(FoundNameMall.Text);
             }
             else if (FoundNameMall.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -52,11 +54,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundMallStatus.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundMallsStatus(FoundMallStatus.Text);
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundMallsStatus(FoundMallStatus.Text);
             }
             else if (FoundMallStatus.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -70,11 +72,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundPavilionsCount.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundPavilionsCount(ConvertWithNullable.ToInt32(FoundPavilionsCount.Text));
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundPavilionsCount(ConvertWithNullable.ToInt32(FoundPavilionsCount.Text));
             }
             else if (FoundPavilionsCount.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -88,11 +90,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundCity.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundCity(FoundCity.Text);
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundCity(FoundCity.Text);
             }
             else if (FoundCity.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -106,11 +108,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundBuildingCost.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundBuildingCost(ConvertWithNullable.ToDouble(FoundBuildingCost.Text));
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundBuildingCost(ConvertWithNullable.ToDouble(FoundBuildingCost.Text));
             }
             else if (FoundBuildingCost.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -124,11 +126,11 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundValueAddedFactor.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundValueAddedFactor(ConvertWithNullable.ToDouble(FoundValueAddedFactor.Text));
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundValueAddedFactor(ConvertWithNullable.ToDouble(FoundValueAddedFactor.Text));
             }
             else if (FoundValueAddedFactor.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
         }
 
@@ -142,12 +144,17 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
             if (FoundLevelsCount.Text != null)
             {
                 DGRNull();
-                MonitoringDGr.ItemsSource = QueryMonitoring.FoundLevelsCount(ConvertWithNullable.ToInt32(FoundLevelsCount.Text));
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = QueryMonitoring.FoundLevelsCount(ConvertWithNullable.ToInt32(FoundLevelsCount.Text));
             }
             else if (FoundLevelsCount.Text == null)
             {
-                MonitoringDGr.ItemsSource = NewMallContext;
+                MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
             }
+        }
+
+        private void MonitoringDGr_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

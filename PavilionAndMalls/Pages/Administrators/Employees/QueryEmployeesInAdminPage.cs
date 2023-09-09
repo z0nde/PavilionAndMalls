@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PavilionAndMalls.Data.NewDataForDisplay;
 
@@ -6,49 +7,49 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
 {
     public class QueryEmployeesInAdminPage
     {
-        public string? FoundSurname()
+        public string? FoundSurname(PavilionsContext context)
         {
-            var surname = PavilionsContext.GetContext().Employees
+            var surname = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.Surname).Distinct().FirstOrDefault();
             return surname;
         }
 
-        public string? FoundName()
+        public string? FoundName(PavilionsContext context)
         {
-            var name = PavilionsContext.GetContext().Employees
+            var name = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.Name).Distinct().FirstOrDefault();
             return name;
         }
 
-        public string? FoundPatronymic()
+        public string? FoundPatronymic(PavilionsContext context)
         {
-            var patronymic = PavilionsContext.GetContext().Employees
+            var patronymic = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.Patronymic).Distinct().FirstOrDefault();
             return patronymic;
         }
 
-        public string? FoundLogin()
+        public string? FoundLogin(PavilionsContext context)
         {
-            var login = PavilionsContext.GetContext().Employees
+            var login = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.Login).Distinct().FirstOrDefault();
             return login;
         }
 
-        public string? FoundPassword()
+        public string? FoundPassword(PavilionsContext context)
         {
-            var passwd = PavilionsContext.GetContext().Employees
+            var passwd = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.Password).Distinct().FirstOrDefault();
             return passwd;
         }
 
-        public string? FoundPhoneNumber()
+        public string? FoundPhoneNumber(PavilionsContext context)
         {
-            var phone = PavilionsContext.GetContext().Employees
+            var phone = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s.PhoneNumber).Distinct().FirstOrDefault();
             return phone;
@@ -57,7 +58,7 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
 
         public static List<string?> Rolers()
         {
-            return PavilionsContext.GetContext().Roles
+            return App.Context.Roles
                 .Select(s => s.RoleName).Distinct().ToList();
         }
 
@@ -69,22 +70,25 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
         /// <returns></returns>
         public List<NewEmployee> SearchOutput(string Surname)
         {
-            List<NewEmployee> ListEmployees = new List<NewEmployee>();
-            var ids = PavilionsContext.GetContext().Employees
-                .Where(s => s.Surname == Surname || s.Surname.Contains(Surname))
+            var context = App.Context;
+            var ListEmployees = new List<NewEmployee>();
+            var ids = context.Employees
+                .Where(s => s.Surname == Surname || s.Surname!.Contains(Surname))
                 .Select(s => s).ToList();
             foreach (var id in ids)
             {
-                var employee = new NewEmployee();
-                employee.Surname = id.Surname;
-                employee.Name = id.Name;
-                employee.Patronymic = id.Patronymic;
-                employee.Login = id.Login;
-                employee.PassWord = id.Password;
-                employee.Role = PavilionsContext.GetContext().Roles
+                var employee = new NewEmployee
+                {
+                    Surname = id.Surname,
+                    Name = id.Name,
+                    Patronymic = id.Patronymic,
+                    Login = id.Login,
+                    PassWord = id.Password,
+                    Role = context.Roles
                     .Where(s => s.IdRole == id.IdRole)
-                    .Select(s => s.RoleName).Distinct().FirstOrDefault();
-                employee.PhoneNumber = id.PhoneNumber;
+                    .Select(s => s.RoleName).Distinct().FirstOrDefault(),
+                    PhoneNumber = id.PhoneNumber
+                };
                 ListEmployees.Add(employee);
             }
 
@@ -94,7 +98,7 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
 
         public int IdRole(string Role)
         {
-            return PavilionsContext.GetContext().Roles
+            return App.Context.Roles
                 .Where(s => s.RoleName == Role)
                 .Select(s => s.IdRole).Distinct().FirstOrDefault();
         }
@@ -102,6 +106,7 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
 
         public void AddEmployee(string Surname, string Name, string Patronymic, string Login, string Password, string Role, string PhoneNumber)
         {
+            var context = App.Context;
             int idRole = IdRole(Role);
 
             var employee = new PavilionAndMalls.Employee
@@ -114,25 +119,26 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
                 IdRole = idRole,
                 PhoneNumber = PhoneNumber
             };
-            PavilionsContext.GetContext().Employees.Add(employee);
-            PavilionsContext.GetContext().SaveChanges();
+            context.Employees.Add(employee);
+            context.SaveChanges();
         }
 
         public void UpdateEmployee(string Surname, string Name, string Patronymic, string Login, string Password, string Role, string PhoneNumber)
         {
+            var context = App.Context;
             int idRole = IdRole(Role);
 
-            var updateemployee = PavilionsContext.GetContext().Employees
+            var updateemployee = context.Employees
                 .Where(s => s.IdEmployee == AdministratorsData.IdEmployee)
                 .Select(s => s).Distinct().FirstOrDefault();
-            updateemployee.Surname = Surname;
+            updateemployee!.Surname = Surname;
             updateemployee.Name = Name;
             updateemployee.Patronymic = Patronymic;
             updateemployee.Login = Login;
             updateemployee.Password = Password;
             updateemployee.IdRole = idRole;
             updateemployee.PhoneNumber = PhoneNumber;
-            PavilionsContext.GetContext().SaveChanges();
+            context.SaveChanges();
         }
     }
 }

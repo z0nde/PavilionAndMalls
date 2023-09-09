@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using PavilionAndMalls.Data;
 
 namespace PavilionAndMalls
 {
@@ -10,7 +11,7 @@ namespace PavilionAndMalls
         public static PavilionsContext Context { get; set; }
         public static object syncRoot = new Object();
 
-        private PavilionsContext()
+        public PavilionsContext()
         {
         }
 

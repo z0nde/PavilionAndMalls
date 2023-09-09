@@ -10,7 +10,7 @@ namespace PavilionAndMalls.Pages.Authentications
     {
         public int IdRoleInEmployee()
         {
-            int? Id = PavilionsContext.GetContext().Employees
+            int? Id = App.Context.Employees
                 .Where(s => s.Login == AuthenticationData.Login && s.Password == AuthenticationData.Password)
                 .Select(s => s.IdRole).Distinct().FirstOrDefault();
 

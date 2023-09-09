@@ -16,7 +16,8 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
         public static List<NewEmployee> LoadedData()
         {
             List<NewEmployee> ListEmployees = new List<NewEmployee>();
-            var ids = PavilionsContext.GetContext().Employees.Select(s => s).ToList();
+            var context = App.Context;
+            var ids = context.Employees.Select(s => s).ToList();
             foreach (var id in ids)
             {
                 var employee = new NewEmployee();
@@ -25,7 +26,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
                 employee.Patronymic = id.Patronymic;
                 employee.Login = id.Login;
                 employee.PassWord = id.Password;
-                employee.Role = PavilionsContext.GetContext().Roles
+                employee.Role = context.Roles
                     .Where(s => s.IdRole == id.IdRole)
                     .Select(s => s.RoleName).Distinct().FirstOrDefault();
                 employee.PhoneNumber = id.PhoneNumber;

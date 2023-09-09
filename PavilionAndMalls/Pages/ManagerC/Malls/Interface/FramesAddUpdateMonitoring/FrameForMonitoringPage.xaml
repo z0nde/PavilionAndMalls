@@ -23,7 +23,7 @@
             <RowDefinition Height="89*"/>
             <RowDefinition Height="327*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="MonitoringDGr" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="7">
+        <DataGrid x:Name="MonitoringDGr" MouseDoubleClick="MonitoringDGr_MouseDoubleClick" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="7">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallName}"/>
                 <DataGridTextColumn Header="Статус ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallStatus}"/>

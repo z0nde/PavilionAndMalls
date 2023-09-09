@@ -25,7 +25,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
         public static List<NewMalls> LoadedData()
         {
             var ListMalls = new List<NewMalls>();
-            var context = App.context;
+            var context = App.Context;
             foreach (Mall id in context.Malls
                 .Where(s => s.IdMallStatus != 4)
                 .Select(s => s)

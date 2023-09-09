@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using PavilionAndMalls.Data.NewDataForDisplay;
 using PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdate;
 using PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitoring;
 
@@ -11,9 +13,16 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
     /// </summary>
     public partial class MallInterface : Page
     {
+        private static List<NewMalls> NewMallsWithFoundInMonitoringPage = new();
+
         public MallInterface()
         {
             InitializeComponent();
+        }
+
+        public MallInterface(List<NewMalls> newMalls)
+        {
+            
         }
 
         private void AddBtnToUpdatePageInFrame_Click(object sender, RoutedEventArgs e)
