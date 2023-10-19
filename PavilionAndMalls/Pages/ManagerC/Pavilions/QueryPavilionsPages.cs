@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PavilionAndMalls.Data.NewDataForDisplay;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,17 +21,9 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
                 .Where(s => s. == ManagerCData.IdPavilions)
                 .Select(s => s.PavilionNumber).Distinct().FirstOrDefault();
             return code;
-        }*/
-
-        public string? FoundArea()
-        {
-            var area = PavilionsContext.GetContext().Pavilions
-                .Where(s => s.IdPavilion == ManagerCData.IdPavilions)
-                .Select(s => s.Area).Distinct().FirstOrDefault().ToString();
-            return area;
         }
 
-        /*public string? FoundStatus()
+        public string? FoundStatus()
         {
             string? status = PavilionsContext.GetContext().PavilionStatuses
                 .Where(s => s.IdPavilionStatus == (PavilionsContext.GetContext().Pavilions
@@ -46,22 +39,12 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
                 .Select(s => s.PavilionStatus1).Distinct().ToList();
         }
 
-        public string? FoundVAF()
+        public NewPavilions GetListForAddUpdate(List<NewPavilions> newPavilions, int  count)
         {
-            var vaf = PavilionsContext.GetContext().Pavilions
-                .Where(s => s.IdPavilion == ManagerCData.IdPavilions)
-                .Select(s => s.ValueAddedFactor).Distinct().FirstOrDefault().ToString();
-            return vaf;
+            return newPavilions
+                .Where(s => s.NumberPavilion == count)
+                .Select(s => s).Distinct().FirstOrDefault()!;
         }
-
-        public string? FoundMeterSquareCost()
-        {
-            var msq = PavilionsContext.GetContext().Pavilions
-                .Where(s => s.IdPavilion == ManagerCData.IdPavilions)
-                .Select(s => s.SquareMeterCost).Distinct().FirstOrDefault().ToString();
-            return msq;
-        }
-
 
         public int IdStatus(string status)
         {

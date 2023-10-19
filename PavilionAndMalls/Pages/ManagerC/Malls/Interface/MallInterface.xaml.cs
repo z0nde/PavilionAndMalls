@@ -13,16 +13,19 @@ namespace PavilionAndMalls.Pages.Manager_C.Malls
     /// </summary>
     public partial class MallInterface : Page
     {
-        private static List<NewMalls> NewMallsWithFoundInMonitoringPage = new();
+        private static List<NewMalls> NewMallsWithFoundInMonitoringPage { get; set; } = new();
 
         public MallInterface()
         {
             InitializeComponent();
+            MainPageFrame.Navigate(new FrameForMonitoringPage());
+            FrameManager.MainFramePageMonitoring = MainPageFrame;
+            MonitoringBtnToUpdatePageInFrame.Background = new SolidColorBrush(Colors.LightSteelBlue);
         }
 
         public MallInterface(List<NewMalls> newMalls)
         {
-            
+            NewMallsWithFoundInMonitoringPage = newMalls;
         }
 
         private void AddBtnToUpdatePageInFrame_Click(object sender, RoutedEventArgs e)

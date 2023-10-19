@@ -29,16 +29,16 @@
         <TextBox x:Name="CityTxt" Margin="10,0,10,10" Grid.Row="3"/>
         <TextBox x:Name="BuildingCostTxt" Margin="10,0,10,10" Grid.Row="3" Grid.Column="1"/>
         <TextBox x:Name="ValueAddedFactorTxt" Margin="10,0,10,10" Grid.Row="3" Grid.Column="2"/>
-        <TextBox x:Name="LevelsCount" Margin="10,0,10,10" Grid.Row="5"/>
+        <TextBox x:Name="LevelsCountTxt" Margin="10,0,10,10" Grid.Row="5"/>
         <TextBox x:Name="Photo" Margin="10,0,10,10" Grid.Row="5" Grid.Column="1"/>
-        <Label Content="Название ТЦ" Margin="10,10,10,107" Grid.RowSpan="2"/>
-        <Label Content="Статус ТЦ" Grid.Column="1" Margin="10,10,10,107" Grid.RowSpan="2"/>
-        <Label Content="Количество павильонов" Grid.Column="2" Margin="10,10,10,107" Grid.RowSpan="2"/>
-        <Label Content="Город" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2"/>
-        <Label Content="Стоимость постройки" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="1"/>
-        <Label Content="Фактор добавочной стоймости" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="2"/>
-        <Label Content="Количество этажей" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4"/>
-        <Label Content="Фото" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Название ТЦ" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Статус ТЦ" FontSize="25" Grid.Column="1" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Количество павильонов" FontSize="25" Grid.Column="2" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Город" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2"/>
+        <Label Content="Стоимость постройки" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Фактор добавочной стоймости" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="2"/>
+        <Label Content="Количество этажей" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4"/>
+        <Label Content="Фото" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4" Grid.Column="1"/>
 
     </Grid>
 </Page>

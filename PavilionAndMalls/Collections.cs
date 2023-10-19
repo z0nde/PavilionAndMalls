@@ -9,5 +9,8 @@ namespace PavilionAndMalls
 
         public readonly static List<string> SortItemsForCombo = new()
         { "По возрастанию", "По убыванию" };
+
+        public readonly static List<string> Statuses = new()
+        { "План", "Строительство", "Реализация"};
     }
 }

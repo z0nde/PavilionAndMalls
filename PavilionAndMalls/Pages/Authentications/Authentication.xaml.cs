@@ -68,5 +68,10 @@ namespace PavilionAndMalls
                 Password.Text = ptc.HidingPassword();
             }*/
         }
+
+        private void GoToManageC_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.MainFrame.Navigate(new Pages.Manager_C.Malls.MallList());
+        }
     }
 }

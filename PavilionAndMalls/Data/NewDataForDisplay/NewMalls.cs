@@ -10,6 +10,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
     /// </summary>
     public class NewMalls
     {
+        public int NumberMall { get; set; }
         public int IdMall { get; set; }
         public string? MallName { get; set; }
         public string? MallStatus { get; set; }
@@ -24,6 +25,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
 
         public static List<NewMalls> LoadedData()
         {
+            int cout = -1;
             var ListMalls = new List<NewMalls>();
             var context = App.Context;
             foreach (Mall id in context.Malls
@@ -31,8 +33,10 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
                 .Select(s => s)
                 .ToList())
             {
+                cout++;
                 NewMalls mall = new()
                 {
+                    NumberMall = cout,
                     IdMall = id.IdMall,
                     MallName = id.MallName,
                     IdMallStatus = (int)id.IdMallStatus!,

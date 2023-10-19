@@ -2,6 +2,8 @@
 using PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitoring.FramesDisplay;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdate;
+using System.Linq;
 
 namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitoring
 {
@@ -21,9 +23,8 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
 
         public FrameForMonitoringPage()
         {
-            //MonitoringDGr.ItemsSource ??= null;
             InitializeComponent();
-            MonitoringDGr.ItemsSource = NewMalls.LoadedData();
+            MonitoringDGr.ItemsSource = NewMallContextWithFound = NewMallContext;
         }
 
         /// <summary>
@@ -154,7 +155,12 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdateMonitor
 
         private void MonitoringDGr_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            int id = MonitoringDGr.SelectedIndex;
+            NewMalls? obj = NewMallContextWithFound
+                .Where(s => s.IdMall == id)
+                .Select(s => s).FirstOrDefault();
+            if (obj != null)
+                FrameManager.MainFramePageMonitoring.Navigate(new FrameForUpdatePage(obj));
         }
     }
 }

@@ -9,6 +9,36 @@
       Title="FrameForUpdatePage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="MallNameTxt" Margin="10,0,10,10" Grid.Row="1"/>
+        <Button x:Name="UpdateBtn" Click="UpdateBtn_Click" Content="Обновить" FontSize="25" Grid.Column="2" Margin="10,10,10,10" Grid.Row="4" Grid.RowSpan="2"/>
+        <ComboBox x:Name="MallStatusCmb" Margin="10,0,10,10" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="PavilionsCountTxt" Margin="10,0,10,10" Grid.Row="1" Grid.Column="2"/>
+        <TextBox x:Name="CityTxt" Margin="10,0,10,10" Grid.Row="3"/>
+        <TextBox x:Name="BuildingCostTxt" Margin="10,0,10,10" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="ValueAddedFactorTxt" Margin="10,0,10,10" Grid.Row="3" Grid.Column="2"/>
+        <TextBox x:Name="LevelsCountTxt" Margin="10,0,10,10" Grid.Row="5"/>
+        <TextBox x:Name="Photo" Margin="10,0,10,10" Grid.Row="5" Grid.Column="1"/>
+        <Label Content="Название ТЦ" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Статус ТЦ" FontSize="25" Grid.Column="1" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Количество павильонов" FontSize="25" Grid.Column="2" Margin="10,10,10,107" Grid.RowSpan="2"/>
+        <Label Content="Город" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2"/>
+        <Label Content="Стоимость постройки" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Фактор добавочной стоймости" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="2" Grid.Column="2"/>
+        <Label Content="Количество этажей" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4"/>
+        <Label Content="Фото" FontSize="25" Margin="10,10,10,107" Grid.RowSpan="2" Grid.Row="4" Grid.Column="1"/>
+
     </Grid>
 </Page>

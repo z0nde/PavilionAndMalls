@@ -20,16 +20,19 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
             var ids = context.Employees.Select(s => s).ToList();
             foreach (var id in ids)
             {
-                var employee = new NewEmployee();
-                employee.Surname = id.Surname;
-                employee.Name = id.Name;
-                employee.Patronymic = id.Patronymic;
-                employee.Login = id.Login;
-                employee.PassWord = id.Password;
-                employee.Role = context.Roles
-                    .Where(s => s.IdRole == id.IdRole)
-                    .Select(s => s.RoleName).Distinct().FirstOrDefault();
-                employee.PhoneNumber = id.PhoneNumber;
+                var employee = new NewEmployee
+                {
+                    Surname = id.Surname,
+                    Name = id.Name,
+                    Patronymic = id.Patronymic,
+                    Login = id.Login,
+                    PassWord = id.Password,
+                    Role = context.Roles
+                        .Where(s => s.IdRole == id.IdRole)
+                        .Select(s => s.RoleName)
+                        .Distinct().FirstOrDefault(),
+                    PhoneNumber = id.PhoneNumber
+                };
                 ListEmployees.Add(employee);
             }
 

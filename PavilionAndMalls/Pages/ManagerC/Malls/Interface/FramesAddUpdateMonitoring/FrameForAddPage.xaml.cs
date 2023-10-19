@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdate
 {
@@ -23,11 +12,13 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesAddUpdate
         public FrameForAddPage()
         {
             InitializeComponent();
+            MallStatusCmb.ItemsSource = Collections.Statuses;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            QueryAddUpdate queryAdd = new (MallNameTxt.Text, ValueAddedFactorTxt.Text, MallStatusCmb.Text, BuildingCostTxt.Text, CityTxt.Text, Photo.Text, LevelsCountTxt.Text, PavilionsCountTxt.Text);
+            queryAdd.AddMall();
         }
     }
 }

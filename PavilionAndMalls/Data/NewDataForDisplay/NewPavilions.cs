@@ -1,11 +1,12 @@
-﻿using PavilionAndMalls.Pages.Manager_C;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace PavilionAndMalls.Data.NewDataForDisplay
 {
     public class NewPavilions
     {
+        public int NumberPavilion { get; set; }
+        public int? IdPavilion { get; set; }
         public string? MallStatuses { get; set; }
         public string? MallName { get; set; }
         public int? NumberFloor { get; set; }
@@ -14,33 +15,39 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
         public string? PavilionStatuses { get; set; }
         public double? ValueAddFacktor { get; set; }
         public double? MeterSquareCost { get; set; }
+        public int? IdMall { get; set; }
 
         public static List<NewPavilions> LoadedData()
         {
             var context = App.Context;
-            List<NewPavilions> ListPavilions = new List<NewPavilions>();
-            var ids = context.Pavilions
-                .Where(s => s.IdMall == ManagerCData.IdMalls)
-                .Select(s => s).ToList();
-            foreach (var id in ids)
+            int count = -1;
+            List<NewPavilions> ListPavilions = new();
+            var ids = context.Pavilions.Select(s => s).ToList();
+            foreach (var id in context.Pavilions.Select(s => s).ToList())
             {
-                var pavilion = new NewPavilions();
-                pavilion.MallStatuses = context.MallStatuses
-                    .Where(s => s.IdMallStatus == context.Malls
+                count++;
+                var pavilion = new NewPavilions
+                {
+                    NumberPavilion = count,
+                    IdMall = id.IdMall,
+                    IdPavilion = id.IdPavilion,
+                    MallStatuses = context.MallStatuses
+                        .Where(s => s.IdMallStatus == context.Malls
+                            .Where(s => s.IdMall == id.IdMall)
+                            .Select(s => s.IdMallStatus).Distinct().FirstOrDefault())
+                        .Select(s => s.MallStatus1).Distinct().FirstOrDefault(),
+                    MallName = context.Malls
                         .Where(s => s.IdMall == id.IdMall)
-                        .Select(s => s.IdMallStatus).Distinct().FirstOrDefault())
-                    .Select(s => s.MallStatus1).Distinct().FirstOrDefault();
-                pavilion.MallName = context.Malls
-                    .Where(s => s.IdMall == id.IdMall)
-                    .Select(s => s.MallName).Distinct().FirstOrDefault();
-                pavilion.NumberFloor = id.LevelNumber;
-                pavilion.PavilionCode = id.PavilionNumber;
-                pavilion.Area = id.Area;
-                pavilion.PavilionStatuses = context.PavilionStatuses
-                    .Where(s => s.IdPavilionStatus == id.IdPavilionStatus)
-                    .Select(s => s.PavilionStatus1).Distinct().FirstOrDefault();
-                pavilion.ValueAddFacktor = id.ValueAddedFactor;
-                pavilion.MeterSquareCost = id.SquareMeterCost;
+                        .Select(s => s.MallName).Distinct().FirstOrDefault(),
+                    NumberFloor = id.LevelNumber,
+                    PavilionCode = id.PavilionNumber,
+                    Area = id.Area,
+                    PavilionStatuses = context.PavilionStatuses
+                        .Where(s => s.IdPavilionStatus == id.IdPavilionStatus)
+                        .Select(s => s.PavilionStatus1).Distinct().FirstOrDefault(),
+                    ValueAddFacktor = id.ValueAddedFactor,
+                    MeterSquareCost = id.SquareMeterCost
+                };
                 ListPavilions.Add(pavilion);
             }
 

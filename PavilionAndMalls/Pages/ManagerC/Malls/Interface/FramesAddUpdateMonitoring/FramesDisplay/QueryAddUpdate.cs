@@ -6,7 +6,28 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
 {
     public class QueryAddUpdate
     {
-        private int IdCity(string City)
+        public string? MallName { get; set; }
+        public string? ValueAddedFactor { get; set; }
+        public string? Status { get; set; }
+        public string? BuildingCost { get; set; }
+        public string? City { get; set; }
+        public string? PathImage { get; set; }
+        public string? LevelCount { get; set; }
+        public string? CountPavilions { get; set; }
+
+        public QueryAddUpdate(string? mallName, string? vaf, string? status, string? buildingCost, string? city, string? pathImage, string? levelCount, string? countPavilions)
+        {
+            MallName = mallName;
+            ValueAddedFactor = vaf;
+            Status = status;
+            BuildingCost = buildingCost;
+            City = city;
+            PathImage = pathImage;
+            LevelCount = levelCount;
+            CountPavilions = countPavilions;
+        }
+
+        private int IdCity()
         {
             int IdCity = App.Context.Cities
                 .Where(s => s.CityName == City)
@@ -14,7 +35,7 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
             return IdCity;
         }
 
-        private int IdStatus(string Status)
+        private int IdStatus()
         {
             int IdStatus = App.Context.MallStatuses
                 .Where(s => s.MallStatus1 == Status)
@@ -22,20 +43,21 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
             return IdStatus;
         }
 
-        private int SearchMallCity(string Mall, string City)
+        private int SearchMallCity()
         {
+
             int idMall = App.Context.Malls
-                .Where(s => s.MallName == Mall && s.IdCity == IdCity(City))
+                .Where(s => s.MallName == MallName && s.IdCity == IdCity())
                 .Select(s => s.IdMall).FirstOrDefault();
             return idMall;
         }
 
-        public int AddCity(string city)
+        public int AddCity()
         {
             var context = App.Context;
             City cityName = new()
             {
-                CityName = city
+                CityName = City
             };
             context.Update(cityName);
             context.SaveChanges();
@@ -43,16 +65,23 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
             return context.Cities.Count() + 1;
         }
 
-        public int FoundSuchCity(string city)
+        public int FoundSuchCity()
         {
             var cities = App.Context.Cities
-                .Where(s => s.CityName == city)
+                .Where(s => s.CityName == City)
                 .Select(s => s.IdCity).FirstOrDefault();
 
             if (cities == 0)
-                return AddCity(city);
+                return AddCity();
             else 
                 return cities;
+        }
+
+        public Mall FoundIdMalls(int idMall, PavilionsContext context)
+        {
+            return context.Malls
+                .Where(s => s.IdMall == idMall)
+                .Select(s => s).Distinct().FirstOrDefault()!;
         }
 
         /*public static List<string?> ListCity()
@@ -68,60 +97,40 @@ namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
         }*/
 
 
-        public void AddMall(string MallName, string ValueAddedFactor, string Status, string BuildingCost, string City, string PathImage, string LevelCount, string CountPavilions)
+        public void AddMall()
         {
             var context = App.Context;
-
-            double ValueAdd = Convert.ToDouble(ValueAddedFactor);
-            double Cost = Convert.ToDouble(BuildingCost);
-            int Floors = Convert.ToInt32(LevelCount);
-            int Count = Convert.ToInt32(CountPavilions);
-            int idStatus = IdStatus(Status);
-            //int idCity = IdCity(City);
-            int idCity = FoundSuchCity(City);
-            byte[] Photo = PhotoConverter.ToByteArrWithPath(PathImage);
 
             Mall Mall = new()
             {
                 MallName = MallName,
-                IdMallStatus = idStatus,
-                PavilionsCount = Count,
-                IdCity = idCity,
-                BuildingCost = Cost,
-                ValueAddedFactor = ValueAdd,
-                LevelsCount = Floors,
-                MallPicture = Photo
+                IdMallStatus = IdStatus(),
+                PavilionsCount = Convert.ToInt32(CountPavilions),
+                IdCity = FoundSuchCity(),
+                BuildingCost = Convert.ToDouble(BuildingCost),
+                ValueAddedFactor = Convert.ToDouble(ValueAddedFactor),
+                LevelsCount = Convert.ToInt32(LevelCount),
+                MallPicture = PhotoConverter.ToByteArrWithPath(PathImage!)
             };
 
             context.Malls.Add(Mall);
             context.SaveChanges();
         }
 
-        public void UpdateMall(string MallName, string ValueAddedFactor, string Status, string BuildingCost, string City, string PathImage, string LevelCount, string CountPavilions, string SearchMall, string SearchCity)
+        public void UpdateMall()
         {
-            var context = App.Context;
+            PavilionsContext context = App.Context;
+            int IdMall = SearchMallCity();
+            Mall upMall = FoundIdMalls(IdMall, context);
 
-            double ValueAdd = Convert.ToDouble(ValueAddedFactor);
-            double Cost = Convert.ToDouble(BuildingCost);
-            int Floors = Convert.ToInt32(LevelCount);
-            int Count = Convert.ToInt32(CountPavilions);
-            int idStatus = IdStatus(Status);
-            //int idCity = IdCity(City);
-            int idCity = FoundSuchCity(City);
-            byte[] Photo = PhotoConverter.ToByteArrWithPath(PathImage);
-            int IdMall = SearchMallCity(SearchMall, SearchCity);
-
-            var upMall = context.Malls
-                .Where(s => s.IdMall == IdMall)
-                .Select(s => s).Distinct().FirstOrDefault();
             upMall!.MallName = MallName;
-            upMall.ValueAddedFactor = ValueAdd;
-            upMall.IdMallStatus = idStatus;
-            upMall.BuildingCost = Cost;
-            upMall.IdCity = idCity;
-            upMall.MallPicture = Photo;
-            upMall.LevelsCount = Floors;
-            upMall.PavilionsCount = Count;
+            upMall.ValueAddedFactor = Convert.ToDouble(ValueAddedFactor);
+            upMall.IdMallStatus = IdStatus();
+            upMall.BuildingCost = Convert.ToDouble(BuildingCost);
+            upMall.IdCity = FoundSuchCity();
+            upMall.MallPicture = PhotoConverter.ToByteArrWithPath(PathImage!);
+            upMall.LevelsCount = Convert.ToInt32(LevelCount);
+            upMall.PavilionsCount = Convert.ToInt32(CountPavilions);
 
             context.SaveChanges();
         }
