@@ -1,10 +1,10 @@
 ﻿namespace PavilionAndMalls
 {
-    public static class ArrSymbols
+    public static class StringSymbols
     {
-        public static string arr = "abcdefghijklmnopqrstuvwxyz";
-        public static string ARR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        public static string INT = "0123456789";
-        public static string ServiceSymbols = ",.<>/?:;\\|{][}=+-_!@#$%^&*";
+        public readonly static string arr = "abcdefghijklmnopqrstuvwxyz";
+        public readonly static string ARR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public readonly static string INT = "0123456789";
+        public readonly static string ServiceSymbols = ",.<>/?:;\\|{][}=+-_!@#$%^&*";
     }
 }

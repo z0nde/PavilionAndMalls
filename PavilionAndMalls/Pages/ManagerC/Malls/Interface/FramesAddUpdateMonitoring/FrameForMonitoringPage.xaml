@@ -23,15 +23,15 @@
             <RowDefinition Height="89*"/>
             <RowDefinition Height="327*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="MonitoringDGr" MouseDoubleClick="MonitoringDGr_MouseDoubleClick" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="7">
+        <DataGrid x:Name="MonitoringDGr" MouseDoubleClick="MonitoringDGr_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2" Grid.ColumnSpan="7">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallName}"/>
-                <DataGridTextColumn Header="Статус ТЦ" IsReadOnly="True" Width="*" Binding="{Binding MallStatus}"/>
-                <DataGridTextColumn Header="Количество павильонов" IsReadOnly="True" Width="*" Binding="{Binding PavilionsCount}"/>
-                <DataGridTextColumn Header="Город" IsReadOnly="True" Width="*" Binding="{Binding City}"/>
-                <DataGridTextColumn Header="Затраты на строительство ТЦ" IsReadOnly="True" Width="*" Binding="{Binding BuildingCost}"/>
-                <DataGridTextColumn Header="Коэффициент добавочной стоимости ТЦ" IsReadOnly="True" Width="*" Binding="{Binding ValueAddedFactor}"/>
-                <DataGridTextColumn Header="Количество этажей" IsReadOnly="True" Width="*" Binding="{Binding LevelsCount}"/>
+                <DataGridTextColumn Header="Название ТЦ" Width="*" Binding="{Binding MallName}"/>
+                <DataGridTextColumn Header="Статус ТЦ" Width="*" Binding="{Binding MallStatus}"/>
+                <DataGridTextColumn Header="Количество павильонов" Width="*" Binding="{Binding PavilionsCount}"/>
+                <DataGridTextColumn Header="Город" Width="*" Binding="{Binding City}"/>
+                <DataGridTextColumn Header="Затраты на строительство ТЦ" Width="*" Binding="{Binding BuildingCost}"/>
+                <DataGridTextColumn Header="Коэффициент добавочной стоимости ТЦ" Width="*" Binding="{Binding ValueAddedFactor}"/>
+                <DataGridTextColumn Header="Количество этажей" Width="*" Binding="{Binding LevelsCount}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="FoundNameMall" TextChanged="FoundNameMall_TextChanged" Margin="0,10,10,10" Grid.Row="1"/>

@@ -22,7 +22,6 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
             var context = App.Context;
             int count = -1;
             List<NewPavilions> ListPavilions = new();
-            var ids = context.Pavilions.Select(s => s).ToList();
             foreach (var id in context.Pavilions.Select(s => s).ToList())
             {
                 count++;

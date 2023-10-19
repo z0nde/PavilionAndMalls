@@ -35,5 +35,6 @@
         <TextBlock Margin="10,10,0,0" Grid.Row="2" FontSize="25" VerticalAlignment="Top" Height="33" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="   "/><Run Language="ru-ru" Text="Пароль"/><Run Text=":"/><LineBreak/><Run Text=":"/></TextBlock>
         <TextBlock Margin="10,10,0,0" Grid.Row="1" FontSize="25" VerticalAlignment="Top" Height="33" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="   "/><Run Language="ru-ru" Text="Логин"/><Run Text=":"/><LineBreak/><Run Text=":"/></TextBlock>
         <Button x:Name="GoToManageC" Content="ManagerC" Click="GoToManageC_Click" Grid.Column="1" Margin="10,10,10,10" Grid.Row="6"/>
+        <Button x:Name="GoToOdmen" Content="Одмэн" Click="GoToOdmen_Click" Grid.Column="2" Margin="10,10,10,10" Grid.Row="6"/>
     </Grid>
 </Page>

@@ -7,7 +7,6 @@
     {
         public static string? Login { get; set; }
         public static string? Password { get; set; }
-        public static int IdEmployee { get; set; }
         public static int? IdRole { get; set; }
         public static int AttemptsCaptcha { get; set; } = 0;
     }

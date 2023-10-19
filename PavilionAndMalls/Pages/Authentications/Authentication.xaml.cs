@@ -73,5 +73,10 @@ namespace PavilionAndMalls
         {
             FrameManager.MainFrame.Navigate(new Pages.Manager_C.Malls.MallList());
         }
+
+        private void GoToOdmen_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.MainFrame.Navigate(new Pages.Administrators.AdminPage());
+        }
     }
 }

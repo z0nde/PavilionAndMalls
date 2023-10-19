@@ -11,11 +11,11 @@
             {
                 int r = rand.Next(1, 3);
                 if (r == 1)
-                    sb.Append(ArrSymbols.arr[rand.Next(0, 25)]);
+                    sb.Append(StringSymbols.arr[rand.Next(0, 25)]);
                 else if (r == 2)
-                    sb.Append(ArrSymbols.ARR[rand.Next(0, 25)]);
+                    sb.Append(StringSymbols.ARR[rand.Next(0, 25)]);
                 else if (r == 3)
-                    sb.Append(ArrSymbols.INT[rand.Next(0, 9)]);
+                    sb.Append(StringSymbols.INT[rand.Next(0, 9)]);
             }
             capcha = sb.ToString();
             return capcha;
