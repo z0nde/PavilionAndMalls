@@ -19,7 +19,8 @@
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="GOTOEmployee" Content="Работники" Margin="10,10,10,10" Grid.Row="1" Click="GOTOEmployee_Click"/>
-        <Button x:Name="GOTOLeasing" Content="Аренда" Margin="10,10,10,10" Grid.Row="1" Grid.Column="1" Click="GOTOLeasing_Click"/>
+        <Button x:Name="GoToEmployee" Content="Работники" Margin="10,10,10,10" Grid.Row="1" Click="GoToEmployee_Click"/>
+        <Button x:Name="GoToOutTenants" Content="Просмотр арендаторов" Margin="10,10,10,10" Grid.Row="1" Grid.Column="1" Click="GoToOutTenants_Click"/>
+        <Button x:Name="GoToAddTenants" Content="Добавить арендатора" Grid.Column="2" Margin="10,10,10,10" Grid.Row="1"  Click="GoToAddTenants_Click"/>
     </Grid>
 </Page>
