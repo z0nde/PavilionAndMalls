@@ -78,5 +78,10 @@ namespace PavilionAndMalls
         {
             FrameManager.MainFrame.Navigate(new Pages.Administrators.AdminPage());
         }
+
+        private void GoTOManagerA_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.MainFrame.Navigate(new Pages.ManagerA.ManagerA());
+        }
     }
 }

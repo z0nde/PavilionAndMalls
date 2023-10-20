@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using PavilionAndMalls.EF_Core;
 
 namespace PavilionAndMalls
 {

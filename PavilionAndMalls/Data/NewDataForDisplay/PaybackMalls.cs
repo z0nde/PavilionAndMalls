@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace PavilionAndMalls.Data.NewDataForDisplay
@@ -8,18 +7,32 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
     {
         public string MallName { get; set; }
         public string City { get; set; }
-        public int Payback { get; set; }
+        public double Payback { get; set; }
+
+        public PaybackMalls(string mallName, string city, double payback) =>
+            (MallName, City, Payback) = (mallName, city, payback);
 
         public static List<PaybackMalls> LoadedData()
         {
+            var context = App.Context;
             var data = new List<PaybackMalls>();
-            foreach (var id in NewPavilions.LoadedData())
+            foreach (var id in context.Malls.Select(s => s).ToList())
             {
-                PaybackMalls payback = new()
-                {
+                string mallName = id.MallName!;
+                string city = context.Cities
+                    .Where(s => s.IdCity == id.IdCity)
+                    .Select(s => s.CityName).FirstOrDefault()!;
 
-                };
-                data.Add(payback);
+                List<RentPavilion> PavilionsInNMall = RentPavilion.LoadedDataPavilions()
+                    .Where(s => s.IdMall == id.IdMall)
+                    .Select(s => s).ToList();
+                double payback = 0.0;
+                foreach (var i in PavilionsInNMall)
+                {
+                    payback += (double)i.CostRentingPavilion!;
+                }
+
+                data.Add(new PaybackMalls(mallName, city, payback));
             }
             return data;
         }

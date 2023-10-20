@@ -1,4 +1,5 @@
 ﻿using PavilionAndMalls.Data.NewDataForDisplay;
+using PavilionAndMalls.EF_Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace PavilionAndMalls.Pages.Manager_C.Pavilion
             double mqc = Convert.ToDouble(MQC);
             int idStatus = IdStatus(Status);
 
-            var pavilion = new PavilionAndMalls.Pavilion
+            var pavilion = new EF_Core.Pavilion
             {
                 LevelNumber = floor,
                 IdMall = ManagerCData.IdMalls,

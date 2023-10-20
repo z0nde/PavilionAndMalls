@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PavilionAndMalls
+namespace PavilionAndMalls.EF_Core
 {
     public partial class City
     {

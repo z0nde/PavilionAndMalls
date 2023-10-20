@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PavilionAndMalls
+namespace PavilionAndMalls.EF_Core
 {
     public partial class Tenant
     {
@@ -14,6 +14,7 @@ namespace PavilionAndMalls
         public string? TenantName { get; set; }
         public string? TenantPhone { get; set; }
         public string? TenantAddress { get; set; }
+        public string? AdditionalInformation { get; set; }
 
         public virtual ICollection<PavilionsTenant> PavilionsTenants { get; set; }
     }

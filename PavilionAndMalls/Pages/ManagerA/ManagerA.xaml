@@ -21,9 +21,9 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="DGrPayback" IsReadOnly="True" AutoGenerateColumns="False"  Grid.ColumnSpan="3" Grid.Row="1" Margin="36,0,36,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название ТЦ" Width="*"/>
-                <DataGridTextColumn Header="Город" Width="*"/>
-                <DataGridTextColumn Header="Процентная окупаемость ТЦ в процентах" Width="*"/>
+                <DataGridTextColumn Header="Название ТЦ" Width="*" Binding="{Binding MallName}"/>
+                <DataGridTextColumn Header="Город" Width="*" Binding="{Binding City}"/>
+                <DataGridTextColumn Header="Процентная окупаемость ТЦ в процентах" Width="*" Binding="{Binding Payback}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

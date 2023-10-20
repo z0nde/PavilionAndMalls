@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media.Imaging;
+using PavilionAndMalls.EF_Core;
 
 namespace PavilionAndMalls.Data.NewDataForDisplay
 {

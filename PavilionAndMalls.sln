@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PavilionAndMalls", "PavilionAndMalls\PavilionAndMalls.csproj", "{207A8510-A585-49A1-9453-FBC6C713D8BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{59498F2A-E0CC-4873-9F58-153B398BC3F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{207A8510-A585-49A1-9453-FBC6C713D8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{207A8510-A585-49A1-9453-FBC6C713D8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{207A8510-A585-49A1-9453-FBC6C713D8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59498F2A-E0CC-4873-9F58-153B398BC3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59498F2A-E0CC-4873-9F58-153B398BC3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59498F2A-E0CC-4873-9F58-153B398BC3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59498F2A-E0CC-4873-9F58-153B398BC3F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

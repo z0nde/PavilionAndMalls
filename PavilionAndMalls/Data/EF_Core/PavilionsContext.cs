@@ -1,36 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using PavilionAndMalls.Data;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace PavilionAndMalls
+namespace PavilionAndMalls.EF_Core
 {
     public partial class PavilionsContext : DbContext
     {
-        public static PavilionsContext Context { get; set; }
-        public static object syncRoot = new Object();
+        private static PavilionsContext _Context { get; set; }
 
         public PavilionsContext()
         {
         }
 
-        private PavilionsContext(DbContextOptions<PavilionsContext> options)
+        public PavilionsContext(DbContextOptions<PavilionsContext> options)
             : base(options)
         {
         }
 
         public static PavilionsContext GetContext()
         {
-            if (Context == null)
-                lock (syncRoot)
-                    if (Context == null)
-                        Context = new PavilionsContext();
-            return Context;
+            if (_Context == null)
+                _Context = new PavilionsContext();
+            return _Context;
         }
 
         public virtual DbSet<City> Cities { get; set; } = null!;
         public virtual DbSet<Employee> Employees { get; set; } = null!;
+        public virtual DbSet<Log> Logs { get; set; } = null!;
         public virtual DbSet<Mall> Malls { get; set; } = null!;
         public virtual DbSet<MallStatus> MallStatuses { get; set; } = null!;
         public virtual DbSet<Pavilion> Pavilions { get; set; } = null!;
@@ -43,6 +37,7 @@ namespace PavilionAndMalls
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-B8VQ37D\\SQLEXPRESS;Database=Pavilions;Trusted_Connection=True;");
             }
         }
@@ -79,6 +74,25 @@ namespace PavilionAndMalls
                     .HasForeignKey(d => d.IdRole)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Employees_Role");
+            });
+
+            modelBuilder.Entity<Log>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Log");
+
+                entity.Property(e => e.CenterName).HasMaxLength(255);
+
+                entity.Property(e => e.CurrentUser).HasMaxLength(255);
+
+                entity.Property(e => e.EmployeeLastName).HasMaxLength(255);
+
+                entity.Property(e => e.RentalEnd).HasColumnType("date");
+
+                entity.Property(e => e.RentalStart).HasColumnType("date");
+
+                entity.Property(e => e.TenantName).HasMaxLength(255);
             });
 
             modelBuilder.Entity<Mall>(entity =>

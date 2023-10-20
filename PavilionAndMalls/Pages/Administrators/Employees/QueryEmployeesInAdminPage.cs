@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PavilionAndMalls.Data.NewDataForDisplay;
+using PavilionAndMalls.EF_Core;
 
 namespace PavilionAndMalls.Pages.Administrators.Employees
 {
@@ -109,7 +110,7 @@ namespace PavilionAndMalls.Pages.Administrators.Employees
             var context = App.Context;
             int idRole = IdRole(Role);
 
-            var employee = new PavilionAndMalls.Employee
+            var employee = new EF_Core.Employee
             {
                 Surname = Surname,
                 Name = Name,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PavilionAndMalls.EF_Core;
 
 namespace PavilionAndMalls.Pages.ManagerC.Malls.Interface.FramesDisplay
 {

@@ -23,4 +23,8 @@
     <Page Include="App.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AdditionalInformation\" />
+  </ItemGroup>
+
 </Project>
