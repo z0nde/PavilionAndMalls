@@ -39,6 +39,7 @@ namespace PavilionAndMalls.Pages.Authentications
                 }
                 else if (AuthenticationData.IdRole == 2)
                 {
+                    FrameManager.MainFrame.Navigate(new ManagerA.ManagerA());
                     AuthenticationData.AttemptsCaptcha = 0;
                 }
                 else if (AuthenticationData.IdRole == 3)

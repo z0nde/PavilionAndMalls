@@ -32,8 +32,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
                         end = DateTime.Now;
                     int months = MyDate.DifferenceInMonths((DateTime)end!, (DateTime)start!);
 
-                    double? costArea = id.Area * id.SquareMeterCost +
-                            (id.Area * id.SquareMeterCost * id.ValueAddedFactor);
+                    double? costArea = id.Area * id.SquareMeterCost * id.ValueAddedFactor;
 
                     data.Add(new RentPavilion((int)id.IdMall!, costArea * months, costArea));
                 }

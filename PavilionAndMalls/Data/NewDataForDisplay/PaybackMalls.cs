@@ -31,6 +31,7 @@ namespace PavilionAndMalls.Data.NewDataForDisplay
                 {
                     payback += (double)i.CostRentingPavilion!;
                 }
+                payback = 100 - (((double)id.BuildingCost! - payback) / (double)id.BuildingCost * 100);
 
                 data.Add(new PaybackMalls(mallName, city, payback));
             }
